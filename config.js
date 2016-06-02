@@ -110,7 +110,7 @@ module.exports = function (options) {
 
   if (options.html) {
     config.plugins.push(new HtmlWebpackPlugin({
-      title: 'Reacpack App',
+      title: 'Reactpack App',
       dev: options.dev,
       port: options.port,
       template: path.join(__dirname, 'index.ejs')
