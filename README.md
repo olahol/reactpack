@@ -83,7 +83,7 @@ render(<Example />, document.getElementById('react-app'))
     -d, --dev        dev
     -p, --port       port for webpack-dev-server
     --clean          clean everything in bundle path before building
-    --no-source-map  output source map
+    --no-source-map  do not output source map
     --no-postcss     do not use postcss
     --no-html        do not output an index.html
     --no-lint        turn off linting
