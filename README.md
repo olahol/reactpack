@@ -1,21 +1,21 @@
 # reactpack [![js-standard-style][standard-image]][standard-url]
 
-> one `npm i` to build your react app.
+> one command to build your React frontend.
 
 <p align="center">
   <img src="reactpack.png" alt="reactpack"/>
 </p>
 
-- [x] One package, no more hunting around for what loaders or babel presets you need.
+- [x] Unified package, only one `npm i` needed.
 - [x] Linting with `standard`.
 - [x] ES6 with Babel presets `react`, `es2015` and `stage-0`.
-- [x] Style loaders  (`css`, `less`, `sass`)
-- [x] PostCSS with `autoprefixer`.
-- [x] Full source maps.
+- [x] PostCSS with `precss` and `autoprefixer`.
+- [x] Style extraction into css bundle.
+- [x] Automatic index.html creation with `html-webpack-plugin`.
+- [x] Source maps for styles and scripts.
 - [x] Watch mode (`--watch`).
 - [x] Development server mode (`--dev`).
-- [x] Automatic index.html creation with `html-webpack-plugin`.
-- [x] Toggable optimiziation with `uglify` and `cssnano` (`-O`).
+- [x] Toggle optimizations with `uglify` and `cssnano` (`-O`).
 
 ## Install
 
@@ -24,6 +24,21 @@ $ npm i reactpack --save-dev
 ```
 
 ## Example
+
+```js
+import React, { Component } from 'react'
+import { render } from 'react-dom'
+
+require('bootstrap/dist/css/bootstrap.css')
+
+class Example extends Component {
+  render () {
+    return <h1>Hello World!</h1>
+  }
+}
+
+render(<Example />, document.getElementById('react-app'))
+```
 
 <p align="center">
   <img src="demo.gif" alt="reactpack"/>

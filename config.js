@@ -1,9 +1,11 @@
 var webpack = require('webpack')
 var path = require('path')
 var autoprefixer = require('autoprefixer')
+var precss = require('precss')
 var cssnano = require('cssnano')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = function (options) {
   options = options || {}
@@ -11,14 +13,18 @@ module.exports = function (options) {
   var entry = options.entry
   var bundle = options.bundle || './dist/bundle.js'
 
+  var bundleDir = path.dirname(bundle)
+  var bundleBasename = path.basename(bundle)
+  var bundleName = bundleBasename.split('.').slice(0, -1).join('.')
+
   var config = {
     entry: entry,
     resolveLoader: {
       root: path.join(__dirname, 'node_modules')
     },
     output: {
-      path: path.resolve(path.dirname(bundle)),
-      filename: path.basename(bundle)
+      path: path.resolve(bundleDir),
+      filename: bundleBasename
     },
     module: {},
     plugins: []
@@ -63,7 +69,7 @@ module.exports = function (options) {
 
   loaders.push({
     test: /\.css$/,
-    loader: 'style!css!postcss'
+    loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'postcss-loader')
   })
 
   loaders.push({
@@ -76,24 +82,14 @@ module.exports = function (options) {
     loader: 'file'
   })
 
-  loaders.push({
-    test: /\.less$/,
-    loader: 'style!postcss!less'
-  })
-
-  loaders.push({
-    test: /\.sass/,
-    loader: 'style!postcss!sass'
-  })
-
   if (options.postcss) {
     if (config.optimize) {
       config.postcss = function () {
-        return [autoprefixer, cssnano]
+        return [precss, autoprefixer, cssnano]
       }
     } else {
       config.postcss = function () {
-        return [autoprefixer]
+        return [precss, autoprefixer]
       }
     }
   }
@@ -107,8 +103,10 @@ module.exports = function (options) {
   }
 
   if (options.clean) {
-    config.plugins(new WebpackCleanupPlugin())
+    config.plugins.push(new WebpackCleanupPlugin())
   }
+
+  config.plugins.push(new ExtractTextPlugin(bundleName + '.css'))
 
   if (options.html) {
     config.plugins.push(new HtmlWebpackPlugin({
