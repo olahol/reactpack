@@ -1,6 +1,6 @@
 {
   "name": "reactpack",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "One command to build your React frontend.",
   "bin": "cli.js",
   "main": "index.js",
