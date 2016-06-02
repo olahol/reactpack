@@ -20,6 +20,12 @@
 ## Install
 
 ```sh
+$ npm i reactpack -g
+```
+
+or
+
+```sh
 $ npm i reactpack --save-dev
 ```
 
@@ -43,16 +49,17 @@ render(<Example />, document.getElementById('react-app'))
 ```javascript
 {
   ...
+  "scripts": {
+    "build": "reactpack src/index.js",
+  },
   "dependencies": {
-    ...
     "bootstrap": "^3.3.6",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    ...
-  }
+  },
   "devDependencies": {
     "reactpack": "^0.2.0"
-  }
+  },
   ...
 }
 ```
