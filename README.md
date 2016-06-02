@@ -12,14 +12,16 @@
 - [x] Style loaders  (`css`, `less`, `sass`)
 - [x] PostCSS with `autoprefixer`.
 - [x] Full source maps.
-- [x] Watch mode.
-- [x] Development server mode.
+- [x] Watch mode (`--watch`).
+- [x] Development server mode (`--dev`).
 - [x] Automatic index.html creation with `html-webpack-plugin`.
-- [x] Toggable optimiziation with `uglify` and `cssnano`.
+- [x] Toggable optimiziation with `uglify` and `cssnano` (`-O`).
 
 ## Install
 
-> npm i reactpack --save-dev
+```sh
+$ npm i reactpack --save-dev
+```
 
 ## Example
 
@@ -27,7 +29,7 @@
   <img src="demo.gif" alt="reactpack"/>
 </p>
 
-## API
+## CLI
 
 ```
   Usage: reactpack [options] <entry> [path/to/bundle]
