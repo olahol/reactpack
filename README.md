@@ -40,7 +40,7 @@ class Example extends Component {
 render(<Example />, document.getElementById('react-app'))
 ```
 
-```json
+```javascript
 {
   ...
   dependencies: {
