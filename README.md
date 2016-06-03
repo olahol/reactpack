@@ -1,31 +1,33 @@
-# reactpack [![js-standard-style][standard-image]][standard-url]
+# ![reactpack](reactpack.png)
 
-> one command to build your React frontend.
+[![NPM version][npm-image]][npm-url]
+[![Dependency Status][dep-image]][dep-url]
+[![js-standard-style][standard-image]][standard-url]
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/olahol/reactpack/master/reactpack.png" alt="reactpack"/>
-</p>
+One command to build your React frontend.
 
-- [x] Unified package, only one `npm i` needed.
-- [x] Linting with your `.eslintrc` or with `standard`.
-- [x] ES6 with Babel presets `react`, `es2015` and `stage-0`.
-- [x] PostCSS with `precss` and `autoprefixer`.
-- [x] Style extraction into css bundle.
-- [x] Automatic index.html creation with `html-webpack-plugin`.
-- [x] Source maps for styles and scripts.
-- [x] Watch mode (`--watch`).
-- [x] Development server mode (`--dev`).
-- [x] Toggle optimizations with `uglify` and `cssnano` (`-O`).
+## Features
+
+- Unified package, only one `npm i` needed.
+- Linting with your `.eslintrc` or with `standard`.
+- ES6 with Babel presets `react`, `es2015` and `stage-0`.
+- PostCSS with `precss` and `autoprefixer`.
+- Style extraction into dedicated css bundle.
+- Automatic index.html creation with `html-webpack-plugin`.
+- Source maps for styles and scripts.
+- Watch mode (`--watch`).
+- Development server mode (`--dev`).
+- Toggle optimizations with `uglify` and `cssnano` (`-O`).
 
 ## Install
 
-```sh
+```
 $ npm i reactpack -g
 ```
 
-or
+or for use in `scripts` section of `package.json`
 
-```sh
+```
 $ npm i reactpack --save-dev
 ```
 
@@ -85,10 +87,14 @@ render(<Example />, document.getElementById('react-app'))
     --standard       force standard linting (do not look for eslint config)
     --clean          delete everything in bundle path before building
     --no-source-map  don't output source maps for css and js
-    --no-postcss     dont't use postcss (autoprefixer and precss)
+    --no-postcss     don't use postcss (autoprefixer and precss)
     --no-html        don't output an index.html
     --no-lint        turn off linting
 ```
 
-[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/reactpack.svg
+[npm-url]: https://npmjs.org/package/reactpack
+[dep-image]: https://david-dm.org/olahol/reactpack/status.svg
+[dep-url]: https://david-dm.org/olahol/reactpack
+[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
 [standard-url]: https://github.com/feross/standard

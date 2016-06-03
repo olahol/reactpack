@@ -13,7 +13,7 @@ program
   .option('--standard', 'force standard linting (do not look for eslint config)')
   .option('--clean', 'delete everything in bundle path before building')
   .option('--no-source-map', 'don\'t output source maps for css and js')
-  .option('--no-postcss', 'dont\'t use postcss (autoprefixer and precss)')
+  .option('--no-postcss', 'don\'t use postcss (autoprefixer and precss)')
   .option('--no-html', 'don\'t output an index.html')
   .option('--no-lint', 'turn off linting')
   .arguments('<entry> [path/to/bundle]')
