@@ -30,7 +30,7 @@ var ProgressBar = function () {
 }
 
 ProgressBar.prototype._columns = function () {
-  return process.stdout.columns - 1
+  return process.stdout.columns - 2
 }
 
 ProgressBar.prototype._getFullMsg = function () {
