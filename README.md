@@ -3,11 +3,11 @@
 > one command to build your React frontend.
 
 <p align="center">
-  <img src="reactpack.png" alt="reactpack"/>
+  <img src="https://raw.githubusercontent.com/olahol/reactpack/master/reactpack.png" alt="reactpack"/>
 </p>
 
 - [x] Unified package, only one `npm i` needed.
-- [x] Linting with `standard`.
+- [x] Linting with your `.eslintrc` or with `standard`.
 - [x] ES6 with Babel presets `react`, `es2015` and `stage-0`.
 - [x] PostCSS with `precss` and `autoprefixer`.
 - [x] Style extraction into css bundle.
@@ -65,7 +65,7 @@ render(<Example />, document.getElementById('react-app'))
 ```
 
 <p align="center">
-  <img src="demo.gif" alt="reactpack"/>
+  <img src="https://raw.githubusercontent.com/olahol/reactpack/master/demo.gif" alt="reactpack"/>
 </p>
 
 ## CLI
@@ -78,14 +78,15 @@ render(<Example />, document.getElementById('react-app'))
     -h, --help       output usage information
     -V, --version    output the version number
     -q, --quiet      no output
-    -O, --optimize   optimize
-    -w, --watch      watch
-    -d, --dev        dev
-    -p, --port       port for webpack-dev-server
-    --clean          clean everything in bundle path before building
-    --no-source-map  do not output source map
-    --no-postcss     do not use postcss
-    --no-html        do not output an index.html
+    -O, --optimize   optimize css and js using minifiers
+    -w, --watch      watch mode, rebuild bundle on file changes
+    -d, --dev        start a dev server with hot module replacement
+    -p, --port       port for dev server (default is 8000)
+    --standard       force standard linting (do not look for eslint config)
+    --clean          delete everything in bundle path before building
+    --no-source-map  don't output source maps for css and js
+    --no-postcss     dont't use postcss (autoprefixer and precss)
+    --no-html        don't output an index.html
     --no-lint        turn off linting
 ```
 

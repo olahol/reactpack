@@ -6,6 +6,7 @@ var cssnano = require('cssnano')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var eslintrcUp = require('eslintrc-up')
 
 module.exports = function (options) {
   options = options || {}
@@ -16,6 +17,8 @@ module.exports = function (options) {
   var bundleDir = path.dirname(bundle)
   var bundleBasename = path.basename(bundle)
   var bundleName = bundleBasename.split('.').slice(0, -1).join('.')
+
+  var eslintConf = eslintrcUp.sync({cwd: process.cwd()})
 
   var config = {
     entry: entry,
@@ -38,14 +41,26 @@ module.exports = function (options) {
   var loaders = []
 
   if (options.lint) {
-    preLoaders.push({
-      test: /\.jsx?$/,
-      loader: 'standard',
-      exclude: /(node_modules|bower_components)/
-    })
+    if (eslintConf && !options.standard) {
+      preLoaders.push({
+        test: /\.jsx?$/,
+        loader: 'eslint-loader',
+        exclude: /(node_modules|bower_components)/
+      })
 
-    config.standard = {
-      parser: 'babel-eslint'
+      config.eslint = {
+        configFile: eslintConf
+      }
+    } else {
+      preLoaders.push({
+        test: /\.jsx?$/,
+        loader: 'standard',
+        exclude: /(node_modules|bower_components)/
+      })
+
+      config.standard = {
+        parser: 'babel-eslint'
+      }
     }
   }
 

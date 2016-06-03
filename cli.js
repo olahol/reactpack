@@ -6,14 +6,15 @@ var program = require('commander')
 program
   .version(pkg.version)
   .option('-q, --quiet', 'no output')
-  .option('-O, --optimize', 'optimize')
-  .option('-w, --watch', 'watch')
-  .option('-d, --dev', 'dev')
-  .option('-p, --port', 'port for webpack-dev-server')
-  .option('--clean', 'clean everything in bundle path before building')
-  .option('--no-source-map', 'output source map')
-  .option('--no-postcss', 'do not use postcss')
-  .option('--no-html', 'do not output an index.html')
+  .option('-O, --optimize', 'optimize css and js using minifiers')
+  .option('-w, --watch', 'watch mode, rebuild bundle on file changes')
+  .option('-d, --dev', 'start a dev server with hot module replacement')
+  .option('-p, --port', 'port for dev server (default is 8000)')
+  .option('--standard', 'force standard linting (do not look for eslint config)')
+  .option('--clean', 'delete everything in bundle path before building')
+  .option('--no-source-map', 'don\'t output source maps for css and js')
+  .option('--no-postcss', 'dont\'t use postcss (autoprefixer and precss)')
+  .option('--no-html', 'don\'t output an index.html')
   .option('--no-lint', 'turn off linting')
   .arguments('<entry> [path/to/bundle]')
 
@@ -60,7 +61,8 @@ var webpackConfig = config({
   dev: program.dev,
   port: port,
   html: program.html,
-  clean: program.clean
+  clean: program.clean,
+  standard: program.standard
 })
 
 if (program.dev) {
