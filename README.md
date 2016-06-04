@@ -28,6 +28,7 @@ One command to build your React frontend.
     * [How do I use another linter than `standard`?](#how-do-i-use-another-linter-than-standard)
     * [How do I customize index.html?](#how-do-i-customize-indexhtml)
   * [CLI](#cli)
+  * [Tested on](#tested-on)
   * [Contributors](#contributors)
 
 ## Install
@@ -131,6 +132,10 @@ for generating html. The default `index.ejs` looks like:
     --no-lint        turn off linting
 ```
 
+## Tested on
+
+- Windows 7 with node 6 and npm 3
+- Ubuntu 12.04 with node 6 and npm 3
 
 ## Contributors
 
