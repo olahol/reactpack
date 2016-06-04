@@ -124,13 +124,22 @@ module.exports = function (options) {
   config.plugins.push(new ExtractTextPlugin(bundleName + '.css'))
 
   if (options.html) {
+    var template = path.dirname(entry) + "/index.ejs"
+
+    try {
+      fs.accessSync(template)
+      console.log("Using custom template found in root of entrypoint.")
+    } catch(e) {
+      console.log("No custom template found, falling back to default :)", e)
+      template = path.join(__dirname, 'index.ejs')
+    }
     config.plugins.push(new HtmlWebpackPlugin({
       title: 'Reactpack App',
       dev: options.dev,
       port: options.port,
-      template: path.join(__dirname, 'index.ejs')
+      template: template
     }))
   }
-
+  
   return config
 }
