@@ -1,3 +1,5 @@
+var fs = require('fs')
+var util = require('util')
 var webpack = require('webpack')
 var path = require('path')
 var autoprefixer = require('autoprefixer')
@@ -37,11 +39,18 @@ module.exports = function (options) {
     config.devtool = 'source-map'
   }
 
+  config._msgs = []
+
   var preLoaders = []
   var loaders = []
 
   if (options.lint) {
     if (eslintConf && !options.standard) {
+      config._msgs.push(util.format(
+        'Using user eslint config for linting (%s).',
+        path.relative(process.cwd(), eslintConf)
+      ))
+
       preLoaders.push({
         test: /\.jsx?$/,
         loader: 'eslint-loader',
@@ -124,15 +133,18 @@ module.exports = function (options) {
   config.plugins.push(new ExtractTextPlugin(bundleName + '.css'))
 
   if (options.html) {
-    var template = path.dirname(entry) + "/index.ejs"
+    var template = path.join(process.cwd(), path.dirname(entry), 'index.ejs')
 
     try {
       fs.accessSync(template)
-      console.log("Using custom template found in root of entrypoint.")
-    } catch(e) {
-      console.log("No custom template found, falling back to default :)", e)
+      config._msgs.push(util.format(
+        'Using custom template found in root of entrypoint (%s).',
+        path.relative(process.cwd(), template)
+      ))
+    } catch (e) {
       template = path.join(__dirname, 'index.ejs')
     }
+
     config.plugins.push(new HtmlWebpackPlugin({
       title: 'Reactpack App',
       dev: options.dev,
@@ -140,6 +152,6 @@ module.exports = function (options) {
       template: template
     }))
   }
-  
+
   return config
 }

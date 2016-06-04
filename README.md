@@ -19,6 +19,17 @@ One command to build your React frontend.
 - Development server mode (`--dev`).
 - Toggle optimizations with `uglify` and `cssnano` (`-O`).
 
+## Table of Contents
+
+  * [Features](#features)
+  * [Install](#install)
+  * [Example](#example)
+  * [FAQ](#faq)
+    * [How do I use another linter than `standard`?](#how-do-i-use-another-linter-than-standard)
+    * [How do I customize index.html?](#how-do-i-customize-indexhtml)
+  * [CLI](#cli)
+  * [Contributors](#contributors)
+
 ## Install
 
 ```
@@ -70,6 +81,34 @@ render(<Example />, document.getElementById('react-app'))
   <img src="https://raw.githubusercontent.com/olahol/reactpack/master/demo.gif" alt="reactpack"/>
 </p>
 
+## FAQ
+
+##### How do I use another linter than `standard`?
+
+`reactpack` will look for an eslint config (`.eslintrc`, `.eslintrc.json` ...) and if one is present
+it will use that one. Make sure that you have all the dependencies installed (plugins etc) to run your linter.
+
+##### How do I customize index.html?
+
+Place an `index.ejs` file in the same directory as your entry script and `reactpack` will use it
+for generating html. The default `index.ejs` looks like:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <% if (htmlWebpackPlugin.options.dev) { %>
+    <script src="http://localhost:<%= htmlWebpackPlugin.options.port %>/webpack-dev-server.js"></script>
+    <% } %>
+  </head>
+  <body>
+    <div id="react-app"></div>
+  </body>
+</html>
+```
+
 ## CLI
 
 ```
@@ -91,6 +130,12 @@ render(<Example />, document.getElementById('react-app'))
     --no-html        don't output an index.html
     --no-lint        turn off linting
 ```
+
+
+## Contributors
+
+* Ola Holmström (@olahol)
+* Tarjei Huse (@tarjei)
 
 [npm-image]: https://img.shields.io/npm/v/reactpack.svg
 [npm-url]: https://npmjs.org/package/reactpack

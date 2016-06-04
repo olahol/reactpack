@@ -25,6 +25,18 @@ function indentLines (n, lines) {
   }).join('\n')
 }
 
+function formatMsgs (msgs) {
+  if (msgs.length > 0) {
+    console.error(indentLine(2, 'Messages:'.bold.blue))
+
+    msgs.forEach(function (msg, i) {
+      console.log(indentLines(4, msg))
+    })
+
+    doublespace()
+  }
+}
+
 function formatErrors (errors) {
   if (errors.length > 0) {
     console.error(indentLine(2, 'Errors:'.bold.red))
@@ -40,7 +52,7 @@ function formatErrors (errors) {
 
 function formatWarnings (warnings) {
   if (warnings.length > 0) {
-    console.error(indentLine(2, 'Warnings:'.bold.yellow))
+    console.log(indentLine(2, 'Warnings:'.bold.yellow))
 
     warnings.forEach(function (warning, i) {
       console.log(indentLines(4, warning))
@@ -53,7 +65,7 @@ function formatWarnings (warnings) {
 
 function formatStats (config, stats) {
   if (countEmittedAssets(stats.assets) > 0) {
-    console.error(indentLine(2, 'Files:'.bold.green))
+    console.log(indentLine(2, 'Files:'.bold.green))
 
     stats.assets.forEach(function (asset) {
       var pathToAsset = path.relative(process.cwd(), path.join(config.output.path, asset.name))
@@ -67,12 +79,20 @@ function formatStats (config, stats) {
   }
 }
 
+exports.pre = function (config) {
+  if (config._msgs.length > 0) {
+    doublespace()
+  }
+
+  formatMsgs(config._msgs)
+}
+
 exports.done = function (err, config, errors, warnings, stats) {
   if (err) {
     return console.error(err)
   }
 
-  if (errors.length > 0 || warnings.length > 0 || countEmittedAssets(stats.assets) > 0) {
+  if ((errors.length > 0 || warnings.length > 0 || countEmittedAssets(stats.assets) > 0) && config._msgs.length === 0) {
     doublespace()
   }
 

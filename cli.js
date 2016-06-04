@@ -2,6 +2,7 @@
 
 var pkg = require('./package.json')
 var program = require('commander')
+var format = require('./format')
 
 program
   .version(pkg.version)
@@ -64,6 +65,8 @@ var webpackConfig = config({
   clean: program.clean,
   standard: program.standard
 })
+
+format.pre(webpackConfig)
 
 if (program.dev) {
   dev(webpackConfig, {
