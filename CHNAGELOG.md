@@ -1,4 +1,4 @@
-# 2016-06-04 (0.4.1)
+# 2016-06-04 (0.4.2)
 
 * Add flag to turn off css extraction.
 
