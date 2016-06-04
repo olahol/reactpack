@@ -16,6 +16,7 @@ program
   .option('--no-source-map', 'don\'t output source maps for css and js')
   .option('--no-postcss', 'don\'t use postcss (autoprefixer and precss)')
   .option('--no-html', 'don\'t output an index.html')
+  .option('--no-extract', 'don\'t extract css into separate bundle')
   .option('--no-lint', 'turn off linting')
   .arguments('<entry> [path/to/bundle]')
 
@@ -63,10 +64,13 @@ var webpackConfig = config({
   port: port,
   html: program.html,
   clean: program.clean,
-  standard: program.standard
+  standard: program.standard,
+  extract: program.extract
 })
 
-format.pre(webpackConfig)
+if (!program.quiet) {
+  format.pre(webpackConfig)
+}
 
 if (program.dev) {
   dev(webpackConfig, {

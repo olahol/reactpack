@@ -91,10 +91,17 @@ module.exports = function (options) {
     loader: 'json'
   })
 
-  loaders.push({
-    test: /\.css$/,
-    loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'postcss-loader')
-  })
+  if (options.extract) {
+    loaders.push({
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'postcss-loader')
+    })
+  } else {
+    loaders.push({
+      test: /\.css$/,
+      loader: 'style!css!postcss'
+    })
+  }
 
   loaders.push({
     test: /\.(png)$/,
@@ -130,7 +137,9 @@ module.exports = function (options) {
     config.plugins.push(new WebpackCleanupPlugin())
   }
 
-  config.plugins.push(new ExtractTextPlugin(bundleName + '.css'))
+  if (options.extract) {
+    config.plugins.push(new ExtractTextPlugin(bundleName + '.css'))
+  }
 
   if (options.html) {
     var template = path.join(process.cwd(), path.dirname(entry), 'index.ejs')

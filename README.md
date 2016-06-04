@@ -129,6 +129,7 @@ for generating html. The default `index.ejs` looks like:
     --no-source-map  don't output source maps for css and js
     --no-postcss     don't use postcss (autoprefixer and precss)
     --no-html        don't output an index.html
+    --no-extract     don't extract css into separate bundle
     --no-lint        turn off linting
 ```
 
