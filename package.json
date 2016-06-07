@@ -1,6 +1,6 @@
 {
   "name": "reactpack",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "One command to build your React frontend.",
   "bin": "cli.js",
   "main": "index.js",
@@ -55,6 +55,6 @@
     "webpack": "^1.13.1",
     "webpack-cleanup-plugin": "^0.2.0",
     "webpack-dev-server": "^1.14.1",
-    "webpack-merge": "^0.13.0"
+    "webpack-merge": "^0.14.0"
   }
 }
