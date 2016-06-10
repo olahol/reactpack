@@ -104,12 +104,12 @@ module.exports = function (options) {
   }
 
   loaders.push({
-    test: /\.(png)$/,
-    loader: 'url?limit=100000'
+    test: /\.(jpg|png|gif)$/,
+    loader: 'url?limit=10000'
   })
 
   loaders.push({
-    test: /\.(jpg|eot|woff|woff2|ttf|svg)$/,
+    test: /\.(eot|woff|woff2|ttf|svg)$/,
     loader: 'file'
   })
 
