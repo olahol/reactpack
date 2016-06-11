@@ -142,6 +142,7 @@ for generating html. The default `index.ejs` looks like:
 
 * Ola Holmström (@olahol)
 * Tarjei Huse (@tarjei)
+* Code Hz (@codehz)
 
 [npm-image]: https://img.shields.io/npm/v/reactpack.svg
 [npm-url]: https://npmjs.org/package/reactpack

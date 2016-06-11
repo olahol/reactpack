@@ -1,3 +1,7 @@
+# 2016-06-11 (0.4.5)
+
+* Fix parsing of port option.
+
 # 2016-06-10 (0.4.4)
 
 * Add gif and jpg to url-loader.
