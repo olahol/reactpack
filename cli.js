@@ -10,7 +10,7 @@ program
   .option('-O, --optimize', 'optimize css and js using minifiers')
   .option('-w, --watch', 'watch mode, rebuild bundle on file changes')
   .option('-d, --dev', 'start a dev server with hot module replacement')
-  .option('-p, --port', 'port for dev server (default is 8000)')
+  .option('-p, --port <port>', 'port for dev server (default is 8000)', parseInt)
   .option('--standard', 'force standard linting (do not look for eslint config)')
   .option('--clean', 'delete everything in bundle path before building')
   .option('--no-source-map', 'don\'t output source maps for css and js')
