@@ -1,3 +1,7 @@
+# 2016-06-13 (0.5.0)
+
+* Add option for custom environments (.env.js) using DefinePlugin.
+
 # 2016-06-11 (0.4.5)
 
 * Fix parsing of port option.

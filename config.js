@@ -125,6 +125,29 @@ module.exports = function (options) {
     }
   }
 
+  if (options.env) {
+    var envfile = path.join(process.cwd(), path.dirname(entry), '.env.js')
+
+    try {
+      var environments = require(envfile)
+      config.plugins.push(new webpack.DefinePlugin(environments))
+
+      config._msgs.push(util.format(
+        'Using custom environments (%s).',
+        path.relative(process.cwd(), JSON.stringify(environments))
+      ))
+      config._msgs.push(util.format(
+        'Using custom environments found in root of entrypoint (%s).',
+        path.relative(process.cwd(), envfile)
+      ))
+    } catch (e) {
+      config._msgs.push(util.format(
+        'No custom environments found in root of entrypoint (%s).',
+        path.relative(process.cwd(), envfile)
+      ))
+    }
+  }
+
   config.module.preLoaders = preLoaders
   config.module.loaders = loaders
 

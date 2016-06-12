@@ -18,6 +18,7 @@ program
   .option('--no-html', 'don\'t output an index.html')
   .option('--no-extract', 'don\'t extract css into separate bundle')
   .option('--no-lint', 'turn off linting')
+  .option('--no-env', 'don\'t try and load .env.js file')
   .arguments('<entry> [path/to/bundle]')
 
 program.parse(process.argv)
@@ -65,7 +66,8 @@ var webpackConfig = config({
   html: program.html,
   clean: program.clean,
   standard: program.standard,
-  extract: program.extract
+  extract: program.extract,
+  env: program.env
 })
 
 if (!program.quiet) {

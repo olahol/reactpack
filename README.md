@@ -13,6 +13,7 @@ One command to build your React frontend.
 - ES6 with Babel presets `react`, `es2015` and `stage-0`.
 - PostCSS with `precss` and `autoprefixer`.
 - Style extraction into dedicated css bundle.
+- Include enviroment variables with an `.env.js` file.
 - Automatic index.html creation with `html-webpack-plugin`.
 - Source maps for styles and scripts.
 - Watch mode (`--watch`).
@@ -117,20 +118,21 @@ for generating html. The default `index.ejs` looks like:
 
   Options:
 
-    -h, --help       output usage information
-    -V, --version    output the version number
-    -q, --quiet      no output
-    -O, --optimize   optimize css and js using minifiers
-    -w, --watch      watch mode, rebuild bundle on file changes
-    -d, --dev        start a dev server with hot module replacement
-    -p, --port       port for dev server (default is 8000)
-    --standard       force standard linting (do not look for eslint config)
-    --clean          delete everything in bundle path before building
-    --no-source-map  don't output source maps for css and js
-    --no-postcss     don't use postcss (autoprefixer and precss)
-    --no-html        don't output an index.html
-    --no-extract     don't extract css into separate bundle
-    --no-lint        turn off linting
+    -h, --help         output usage information
+    -V, --version      output the version number
+    -q, --quiet        no output
+    -O, --optimize     optimize css and js using minifiers
+    -w, --watch        watch mode, rebuild bundle on file changes
+    -d, --dev          start a dev server with hot module replacement
+    -p, --port <port>  port for dev server (default is 8000)
+    --standard         force standard linting (do not look for eslint config)
+    --clean            delete everything in bundle path before building
+    --no-source-map    don't output source maps for css and js
+    --no-postcss       don't use postcss (autoprefixer and precss)
+    --no-html          don't output an index.html
+    --no-extract       don't extract css into separate bundle
+    --no-lint          turn off linting
+    --no-env           don't try and load .env.js file
 ```
 
 ## Tested on
@@ -143,6 +145,7 @@ for generating html. The default `index.ejs` looks like:
 * Ola Holmström (@olahol)
 * Tarjei Huse (@tarjei)
 * Code Hz (@codehz)
+* Erik Huisman (@erikhuisman)
 
 [npm-image]: https://img.shields.io/npm/v/reactpack.svg
 [npm-url]: https://npmjs.org/package/reactpack
