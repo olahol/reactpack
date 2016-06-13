@@ -1,3 +1,8 @@
+# 2016-06-13 (0.5.1)
+
+* Force `process.env.NODE_ENV` to equal `production` when optimizing.
+* Suppress errors from UglifyJS.
+
 # 2016-06-13 (0.5.0)
 
 * Add option for custom environments (.env.js) using DefinePlugin.
