@@ -127,12 +127,14 @@ for generating html. The default `index.ejs` looks like:
     -p, --port <port>  port for dev server (default is 8000)
     --standard         force standard linting (do not look for eslint config)
     --clean            delete everything in bundle path before building
+    --absolute-path    use absolute path for assets
     --no-source-map    don't output source maps for css and js
     --no-postcss       don't use postcss (autoprefixer and precss)
     --no-html          don't output an index.html
     --no-extract       don't extract css into separate bundle
     --no-lint          turn off linting
     --no-env           don't try and load .env.js file
+    --no-inject        don't inject bundles into index.html
 ```
 
 ## Tested on

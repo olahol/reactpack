@@ -1,6 +1,6 @@
 {
   "name": "reactpack",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "One command to build your React frontend.",
   "bin": "cli.js",
   "main": "index.js",
@@ -41,8 +41,10 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "filesize": "^3.3.0",
+    "find-up": "^1.1.2",
     "html-webpack-plugin": "^2.18.0",
     "json-loader": "^0.5.4",
+    "lodash.merge": "^4.4.0",
     "lodash.padleft": "^3.1.3",
     "lodash.padright": "^3.1.3",
     "log-update": "^1.0.2",

@@ -9,6 +9,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var eslintrcUp = require('eslintrc-up')
+var findUp = require('find-up')
+var merge = require('lodash.merge')
 
 module.exports = function (options) {
   options = options || {}
@@ -21,6 +23,7 @@ module.exports = function (options) {
   var bundleName = bundleBasename.split('.').slice(0, -1).join('.')
 
   var eslintConf = eslintrcUp.sync({cwd: process.cwd()})
+  var babelRc = findUp.sync('.babelrc', {cwd: process.cwd()})
 
   var config = {
     entry: entry,
@@ -37,6 +40,10 @@ module.exports = function (options) {
 
   if (options.sourceMap) {
     config.devtool = 'source-map'
+  }
+
+  if (options.dev || options.absolutePath) {
+    config.output.publicPath = '/'
   }
 
   config._msgs = []
@@ -73,17 +80,37 @@ module.exports = function (options) {
     }
   }
 
+  var babelLoaderQuery = {
+    presets: [
+      'babel-preset-es2015',
+      'babel-preset-react',
+      'babel-preset-stage-0'
+    ].map(require.resolve)
+  }
+
+  if (babelRc) {
+    try {
+      var babelRcData = fs.readFileSync(babelRc, 'utf8')
+      var babelRcQuery = JSON.parse(babelRcData)
+      config._msgs.push(util.format(
+        'Using babel config (%s)',
+        path.relative(process.cwd(), babelRc)
+      ))
+      babelLoaderQuery = merge(babelLoaderQuery, babelRcQuery)
+    } catch (e) {
+      config._msgs.push(util.format(
+        'Error loading babel config (%s): %s',
+        path.relative(process.cwd(), babelRc),
+        e.message
+      ))
+    }
+  }
+
   loaders.push({
     test: /\.jsx?$/,
     exclude: /(node_modules|bower_components)/,
     loader: 'babel',
-    query: {
-      presets: [
-        'babel-preset-es2015',
-        'babel-preset-react',
-        'babel-preset-stage-0'
-      ].map(require.resolve)
-    }
+    query: babelLoaderQuery
   })
 
   loaders.push({
@@ -141,10 +168,6 @@ module.exports = function (options) {
         path.relative(process.cwd(), envfile)
       ))
     } catch (e) {
-      config._msgs.push(util.format(
-        'No custom environments found in root of entrypoint (%s).',
-        path.relative(process.cwd(), envfile)
-      ))
     }
   }
 
@@ -187,7 +210,8 @@ module.exports = function (options) {
       title: 'Reactpack App',
       dev: options.dev,
       port: options.port,
-      template: template
+      template: template,
+      inject: options.inject
     }))
   }
 

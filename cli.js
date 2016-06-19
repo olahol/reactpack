@@ -13,12 +13,14 @@ program
   .option('-p, --port <port>', 'port for dev server (default is 8000)', parseInt)
   .option('--standard', 'force standard linting (do not look for eslint config)')
   .option('--clean', 'delete everything in bundle path before building')
+  .option('--absolute-path', 'use absolute path for assets')
   .option('--no-source-map', 'don\'t output source maps for css and js')
   .option('--no-postcss', 'don\'t use postcss (autoprefixer and precss)')
   .option('--no-html', 'don\'t output an index.html')
   .option('--no-extract', 'don\'t extract css into separate bundle')
   .option('--no-lint', 'turn off linting')
   .option('--no-env', 'don\'t try and load .env.js file')
+  .option('--no-inject', 'don\'t inject bundles into index.html')
   .arguments('<entry> [path/to/bundle]')
 
 program.parse(process.argv)
@@ -67,7 +69,9 @@ var webpackConfig = config({
   clean: program.clean,
   standard: program.standard,
   extract: program.extract,
-  env: program.env
+  env: program.env,
+  inject: program.inject,
+  absolutePath: program.absolutePath
 })
 
 if (!program.quiet) {

@@ -1,3 +1,10 @@
+# 2016-06-20 (0.6.0)
+
+* Load .babelrc if one is found and merge with reactpack babel settings.
+* Use absolute path with dev server.
+* Add option to not inject bundles `--no-inject`.
+* Add option to inject bundles with absolute path `--absolute-path`.
+
 # 2016-06-13 (0.5.1)
 
 * Force `process.env.NODE_ENV` to equal `production` when optimizing.
