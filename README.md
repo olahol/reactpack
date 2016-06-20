@@ -10,6 +10,7 @@ One command to build your React frontend.
 
 - Unified package, only one `npm i` needed.
 - Linting with your `.eslintrc` or with `standard`.
+- Smartly merges existing `.babelrc` and `webpack.config.js` into configuration.
 - ES6 with Babel presets `react`, `es2015` and `stage-0`.
 - PostCSS with `precss` and `autoprefixer`.
 - Style extraction into dedicated css bundle.
@@ -28,6 +29,7 @@ One command to build your React frontend.
   * [FAQ](#faq)
     * [How do I use another linter than `standard`?](#how-do-i-use-another-linter-than-standard)
     * [How do I customize index.html?](#how-do-i-customize-indexhtml)
+    * [How do I add other loaders?](#how-do-i-add-other-loaders)
   * [CLI](#cli)
   * [Tested on](#tested-on)
   * [Contributors](#contributors)
@@ -109,6 +111,24 @@ for generating html. The default `index.ejs` looks like:
     <div id="react-app"></div>
   </body>
 </html>
+```
+
+##### How do I add other loaders?
+
+Reactpack merge existing `webpack.config.js` it into its config so for example if
+you want to add `less-loader` just have a `webpack.config.js` with:
+
+```js
+module.exports = {
+  module: {
+    loaders: [
+      {
+        test: /\.less$/,
+        loader: 'style!css!less'
+      }
+    ]
+  }
+}
 ```
 
 ## CLI

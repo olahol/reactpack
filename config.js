@@ -11,6 +11,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var eslintrcUp = require('eslintrc-up')
 var findUp = require('find-up')
 var merge = require('lodash.merge')
+var webpackMerge = require('webpack-merge')
 
 module.exports = function (options) {
   options = options || {}
@@ -24,6 +25,7 @@ module.exports = function (options) {
 
   var eslintConf = eslintrcUp.sync({cwd: process.cwd()})
   var babelRc = findUp.sync('.babelrc', {cwd: process.cwd()})
+  var webpackConfig = findUp.sync('webpack.config.js', {cwd: process.cwd()})
 
   var config = {
     entry: entry,
@@ -96,7 +98,7 @@ module.exports = function (options) {
         'Using babel config (%s)',
         path.relative(process.cwd(), babelRc)
       ))
-      babelLoaderQuery = merge(babelLoaderQuery, babelRcQuery)
+      babelLoaderQuery = webpackMerge(babelLoaderQuery, babelRcQuery)
     } catch (e) {
       config._msgs.push(util.format(
         'Error loading babel config (%s): %s',
@@ -213,6 +215,18 @@ module.exports = function (options) {
       template: template,
       inject: options.inject
     }))
+  }
+
+  if (webpackConfig) {
+    try {
+      var webpackConfigData = require(webpackConfig)
+      config = webpackMerge.smart(config, webpackConfigData)
+      config._msgs.push(util.format(
+        'Merging found webpack config %s with reactpack config.',
+        path.relative(process.cwd(), webpackConfig)
+      ))
+    } catch (e) {
+    }
   }
 
   return config

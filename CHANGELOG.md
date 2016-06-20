@@ -1,3 +1,7 @@
+# 2016-06-20 (0.7.0)
+
+* Load `webpack.config.js` if one is found and merge with reactpack config.
+
 # 2016-06-20 (0.6.0)
 
 * Load .babelrc if one is found and merge with reactpack babel settings.
