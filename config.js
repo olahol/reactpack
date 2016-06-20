@@ -10,7 +10,6 @@ var WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var eslintrcUp = require('eslintrc-up')
 var findUp = require('find-up')
-var merge = require('lodash.merge')
 var webpackMerge = require('webpack-merge')
 
 module.exports = function (options) {
