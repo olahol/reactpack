@@ -24,6 +24,6 @@ module.exports = function (config, options) {
   })
 
   server.listen(options.port, '0.0.0.0', function () {
-    console.log('webpack-dev-server http://localhost:%d/', options.port)
+    console.log('webpack-dev-server http://0.0.0.0:%d/', options.port)
   })
 }

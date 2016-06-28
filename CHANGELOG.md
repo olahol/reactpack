@@ -1,3 +1,7 @@
+# 2016-06-28 (0.7.3)
+
+* Switch dev server from localhost to 0.0.0.0.
+
 # 2016-06-20 (0.7.0)
 
 * Load `webpack.config.js` if one is found and merge with reactpack config.
