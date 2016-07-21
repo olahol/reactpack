@@ -161,6 +161,7 @@ module.exports = {
 
 - Windows 7 with node 6 and npm 3
 - Ubuntu 12.04 with node 6 and npm 3
+- MacOS 10.11 El Capitan with node 5-6 and npm 3
 
 ## Contributors
 
