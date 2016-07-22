@@ -8,8 +8,12 @@ module.exports = function (config, options) {
       new webpack.HotModuleReplacementPlugin()
     ]
   })
-  
-  config.entry = [config.entry, "webpack-dev-server/client?http://localhost:" + options.port + "/", "webpack/hot/dev-server"]
+
+  config.entry = [
+    config.entry,
+    require.resolve("webpack-dev-server/client") + "?http://localhost:" + options.port,
+    require.resolve("webpack/hot/dev-server")
+  ]
 
   var compiler = webpack(config)
 
