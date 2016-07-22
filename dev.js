@@ -8,6 +8,8 @@ module.exports = function (config, options) {
       new webpack.HotModuleReplacementPlugin()
     ]
   })
+  
+  config.entry = [config.entry, "webpack-dev-server/client?http://localhost:" + options.port + "/", "webpack/hot/dev-server"]
 
   var compiler = webpack(config)
 
@@ -20,7 +22,8 @@ module.exports = function (config, options) {
     },
 
     quiet: options.quiet,
-    stats: 'errors-only'
+    stats: 'errors-only',
+    hot: true
   })
 
   server.listen(options.port, '0.0.0.0', function () {
