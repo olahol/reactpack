@@ -224,7 +224,8 @@ module.exports = function (options) {
         'Merging found webpack config %s with reactpack config.',
         path.relative(process.cwd(), webpackConfig)
       ))
-    } catch (e) {
+    } catch (err) {
+      throw err
     }
   }
 
