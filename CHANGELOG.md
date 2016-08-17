@@ -1,3 +1,8 @@
+# 2016-08-17 (0.7.4)
+
+* Allow changing the dev server configuration.
+* Throw error if it happens in webpack.config.js.
+
 # 2016-06-28 (0.7.3)
 
 * Switch dev server from localhost to 0.0.0.0.

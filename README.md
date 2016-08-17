@@ -171,6 +171,7 @@ module.exports = {
 * Erik Huisman (@erikhuisman)
 * charlie hield (@stursby)
 * Niklas (@nikteg)
+* Victor Bjelkholm (@VictorBjelkholm)
 
 [npm-image]: https://img.shields.io/npm/v/reactpack.svg
 [npm-url]: https://npmjs.org/package/reactpack
