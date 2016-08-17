@@ -1,4 +1,4 @@
-# 2016-08-17 (0.7.4)
+# 2016-08-17 (0.7.5)
 
 * Allow changing the dev server configuration.
 * Throw error if it happens in webpack.config.js.
