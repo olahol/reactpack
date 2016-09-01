@@ -11,8 +11,8 @@ module.exports = function (config, options) {
 
   config.entry = [
     config.entry,
-    require.resolve("webpack-dev-server/client") + "?http://localhost:" + options.port,
-    require.resolve("webpack/hot/dev-server")
+    require.resolve('webpack-dev-server/client') + '?http://localhost:' + options.port,
+    require.resolve('webpack/hot/dev-server')
   ]
 
   var compiler = webpack(config)

@@ -61,7 +61,7 @@ module.exports = function (options) {
 
       preLoaders.push({
         test: /\.jsx?$/,
-        loader: 'eslint-loader',
+        loader: 'eslint',
         exclude: /(node_modules|bower_components)/
       })
 
@@ -110,8 +110,7 @@ module.exports = function (options) {
   loaders.push({
     test: /\.jsx?$/,
     exclude: /(node_modules|bower_components)/,
-    loader: 'babel',
-    query: babelLoaderQuery
+    loader: util.format('react-hot!babel?%s', JSON.stringify(babelLoaderQuery))
   })
 
   loaders.push({
@@ -122,7 +121,7 @@ module.exports = function (options) {
   if (options.extract) {
     loaders.push({
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'postcss-loader')
+      loader: ExtractTextPlugin.extract('style', 'css!postcss')
     })
   } else {
     loaders.push({

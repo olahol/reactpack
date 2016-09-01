@@ -1,3 +1,9 @@
+# 2016-09-01 (0.8.0)
+
+* Add full react hot loading with `react-hot-loader`.
+* Update deps.
+* Fix ExtractTextPlugin loaders.
+
 # 2016-08-17 (0.7.5)
 
 * Allow changing the dev server configuration.
