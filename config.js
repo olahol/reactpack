@@ -35,6 +35,9 @@ module.exports = function (options) {
       path: path.resolve(bundleDir),
       filename: bundleBasename
     },
+    resolve: {
+      alias: { 'react/lib/ReactMount': 'react-dom/lib/ReactMount' }
+    },
     module: {},
     plugins: []
   }

@@ -1,3 +1,7 @@
+# 2016-12-06 (0.9.0)
+
+* Fix react-hot-loader.
+
 # 2016-09-01 (0.8.0)
 
 * Add full react hot loading with `react-hot-loader`.
